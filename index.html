@@ -24,11 +24,12 @@
 --font-display:'Syne',sans-serif;
 --font-body:'Outfit',sans-serif;
 }
-html{scroll-behavior:smooth;font-size:16px}
-body{font-family:var(--font-body);background:var(--bg-primary);color:var(--text-primary);overflow-x:hidden;line-height:1.6}
+html{scroll-behavior:smooth;font-size:16px;height:100%}
+body{display:flex;flex-direction:column;min-height:100vh;font-family:var(--font-body);background:var(--bg-primary);color:var(--text-primary);overflow-x:hidden;line-height:1.6}
 a{text-decoration:none;color:inherit}
 ul{list-style:none}
 img{max-width:100%;display:block}
+footer.footer{margin-top:auto;}
 
 /* Scrollbar */
 ::-webkit-scrollbar{width:6px}
@@ -92,7 +93,7 @@ img{max-width:100%;display:block}
 .fc1 .fc-icon{background:rgba(0,212,255,0.15)}
 .fc2{bottom:15%;left:-5%;animation-delay:1s}
 .fc2 .fc-icon{background:rgba(123,92,255,0.15)}
-.fc3{top:50%;right:-15%;animation-delay:2s}
+.fc3{top:50%;right:4%;animation:none;transform:translateY(0)}
 .fc3 .fc-icon{background:rgba(255,60,172,0.15)}
 @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
 .hero-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;margin-top:3rem;animation:fadeInUp .8s ease .5s both}
@@ -234,6 +235,8 @@ section{padding:6rem 2rem;position:relative}
 .social-link.linkedin:hover{background:#005582;border-color:#005582;transform:translateY(-3px)}
 .social-link.x{background:#000;border-color:#000;color:#fff}
 .social-link.x:hover{background:#222;border-color:#222;transform:translateY(-3px)}
+.social-link.facebook{background:#1877f2;border-color:#1877f2;color:#fff}
+.social-link.facebook:hover{background:#165ec8;border-color:#165ec8;transform:translateY(-3px)}
 .social-link.instagram{background:radial-gradient(circle at 30% 107%,#fdf497 0%,#fdf497 5%,#fd5949 45%,#d6249f 60%,#285AEB 90%);border:none;color:#fff}
 .social-link.instagram:hover{filter:brightness(1.08);transform:translateY(-3px)}
 .social-link.github{background:#24292e;border-color:#24292e;color:#fff}
@@ -257,7 +260,7 @@ section{padding:6rem 2rem;position:relative}
 .footer h4{font-family:var(--font-display);font-size:.9rem;font-weight:700;margin-bottom:1rem}
 .footer-links a{display:block;font-size:.85rem;color:var(--text-secondary);padding:.3rem 0;transition:color .3s}
 .footer-links a:hover{color:var(--accent-cyan)}
-.footer-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:1.5rem;border-top:1px solid rgba(255,255,255,0.05);font-size:.78rem;color:var(--text-muted)}
+.footer-bottom{display:flex;justify-content:center;align-items:center;padding-top:1.5rem;border-top:1px solid rgba(255,255,255,0.05);font-size:.78rem;color:var(--text-muted);text-align:center}
 
 /* ===== ANIMATIONS ===== */
 @keyframes fadeInUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
@@ -282,26 +285,69 @@ section{padding:6rem 2rem;position:relative}
 @media(max-width:768px){
 .nav-links{display:none}
 .mobile-toggle{display:flex}
+.navbar{padding:.85rem 1rem}
+.nav-logo{min-width:0;max-width:calc(100% - 54px);gap:.5rem}
+.nav-logo img{width:38px;height:38px}
+.nav-logo span{font-size:.88rem;letter-spacing:.02em;overflow:hidden;text-overflow:ellipsis}
 .mobile-menu.active{display:flex;flex-direction:column;position:fixed;top:0;left:0;width:100%;height:100vh;background:rgba(255,255,255,0.97);z-index:999;justify-content:center;align-items:center;gap:2rem}
 .mobile-menu a{font-size:1.2rem;color:#222;font-weight:700}
 .mobile-menu .nav-logo{margin-bottom:1.2rem}
 .mobile-menu .nav-logo span{color:#222}
+.hero{padding:6.5rem 1rem 2.8rem;min-height:auto}
+.hero-content{display:flex;flex-direction:column;align-items:center;text-align:center}
+.hero-badge{justify-content:center}
+.hero p.subtitle{margin-left:auto;margin-right:auto}
+.hero-buttons{width:100%;flex-direction:column;align-items:center;justify-content:center}
+.hero-buttons .btn-primary,.hero-buttons .btn-outline{width:min(100%,260px);justify-content:center}
 .services-grid,.portfolio-grid,.testimonial-grid{grid-template-columns:1fr}
 .industries-grid{grid-template-columns:repeat(2,1fr)}
 .features-grid{grid-template-columns:repeat(2,1fr)}
 .process-steps{grid-template-columns:1fr 1fr}
-.hero-stats{grid-template-columns:repeat(2,1fr)}
+.hero-stats{grid-template-columns:repeat(2,1fr);width:100%;gap:1rem;margin-top:2.2rem}
+.stat-num{font-size:1.7rem}
 .form-row{grid-template-columns:1fr}
 .footer-grid{grid-template-columns:1fr}
 section{padding:4rem 1.2rem}
 }
 @media(max-width:480px){
 .industries-grid,.features-grid,.process-steps,.hero-stats{grid-template-columns:1fr}
+.navbar{padding:.75rem .85rem}
+.nav-inner{gap:.8rem}
+.nav-logo img{width:34px;height:34px}
+.nav-logo span{font-size:.8rem}
+.hero{padding:5.8rem .9rem 2rem}
+.hero-badge{font-size:.72rem;padding:.35rem .85rem}
+.hero h1{font-size:clamp(2rem,9vw,2.8rem)}
+.hero p.subtitle{font-size:1rem}
+.hero-buttons .btn-primary,.hero-buttons .btn-outline{width:min(100%,245px);font-size:.92rem;padding:.8rem 1.5rem}
+.section-title{font-size:clamp(1.6rem,7vw,2.4rem)}
+.section-desc{font-size:.98rem}
+.services-grid,.portfolio-grid,.testimonial-grid{grid-template-columns:1fr}
+.contact-grid{grid-template-columns:1fr}
+.footer-inner{padding:0 0.6rem}
+.about-grid{grid-template-columns:1fr}
+.about-text{align-items:center;text-align:center}
+.about-card{margin:0 auto;max-width:92%}
+.about-features{grid-template-columns:1fr}
 }
 
 .whatsapp-button{position:fixed;right:18px;bottom:20px;width:64px;height:64px;border-radius:50%;background:linear-gradient(135deg,#25D366,#128C7E);display:flex;align-items:center;justify-content:center;box-shadow:0 10px 25px rgba(0,0,0,0.35);z-index:2000;transition:transform .2s ease}
 .whatsapp-button:hover{transform:scale(1.06)}
 .whatsapp-button img{width:38px;height:38px}
+@media(max-width:480px){
+.whatsapp-button{right:12px;bottom:14px;width:56px;height:56px}
+.whatsapp-button img{width:32px;height:32px}
+}
+
+/* Service Modal */
+.service-modal{position:fixed;inset:0;background:rgba(0,0,0,0.7);display:none;align-items:center;justify-content:center;z-index:3000;backdrop-filter:blur(4px)}
+.service-modal.active{display:flex}
+.modal-content{background:linear-gradient(135deg,rgba(4,6,15,0.98),rgba(12,18,40,0.98));border:1px solid rgba(0,212,255,0.2);border-radius:20px;padding:2.5rem;max-width:600px;width:90%;max-height:85vh;overflow-y:auto;position:relative;box-shadow:0 20px 60px rgba(0,0,0,0.5)}
+.modal-content h2{font-family:var(--font-display);font-size:1.8rem;color:#f0f2ff;margin-bottom:1rem;background:var(--gradient-main);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.modal-content p{color:var(--text-secondary);line-height:1.8;margin-bottom:1rem}
+.modal-content ul{color:var(--text-secondary);line-height:1.8;margin-bottom:1.5rem}
+.modal-close{position:absolute;top:1.5rem;right:1.5rem;width:32px;height:32px;border:none;background:rgba(255,255,255,0.1);border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1.2rem;color:#f0f2ff;transition:all .3s}
+.modal-close:hover{background:rgba(0,212,255,0.2);color:#00d4ff}
 </style>
 </head>
 <body>
@@ -445,53 +491,59 @@ Free Consultation
 <p class="section-desc">End-to-end digital solutions designed to accelerate your business and deliver lasting competitive advantage.</p>
 </div>
 <div class="services-grid">
-<div class="service-card reveal">
+<div class="service-card reveal" onclick="openServiceModal(this)" style="cursor:pointer;">
 <div class="service-icon si-1">🌐</div>
 <h3>Web Development</h3>
 <p>Custom, responsive, and high-performance websites built with modern frameworks that convert visitors into loyal customers.</p>
-<a href="#contact" class="service-link">Read More →</a>
+<a href="#" class="service-link" onclick="event.stopPropagation();event.preventDefault();openServiceModal(this.parentElement)">Read More →</a>
 </div>
-<div class="service-card reveal">
+<div class="service-card reveal" onclick="openServiceModal(this)" style="cursor:pointer;">
 <div class="service-icon si-2">📱</div>
 <h3>Mobile App Development</h3>
 <p>Native and cross-platform mobile applications that deliver seamless user experiences across iOS and Android devices.</p>
-<a href="#contact" class="service-link">Read More →</a>
+<a href="#" class="service-link" onclick="event.stopPropagation();event.preventDefault();openServiceModal(this.parentElement)">Read More →</a>
 </div>
-<div class="service-card reveal">
+<div class="service-card reveal" onclick="openServiceModal(this)" style="cursor:pointer;">
 <div class="service-icon si-3">🛒</div>
 <h3>E-commerce Solutions</h3>
 <p>Scalable online stores with secure payment gateways, inventory management, and optimized checkout flows for maximum revenue.</p>
-<a href="#contact" class="service-link">Read More →</a>
+<a href="#" class="service-link" onclick="event.stopPropagation();event.preventDefault();openServiceModal(this.parentElement)">Read More →</a>
 </div>
-<div class="service-card reveal">
-<div class="service-icon si-4">�</div>
+<div class="service-card reveal" onclick="openServiceModal(this)" style="cursor:pointer;">
+<div class="service-icon si-4">⚙️</div>
 <h3>Software Development</h3>
 <p>Full-stack software development with custom architectures, APIs, and scalable microservices for every business need.</p>
-<a href="#contact" class="service-link">Read More →</a>
+<a href="#" class="service-link" onclick="event.stopPropagation();event.preventDefault();openServiceModal(this.parentElement)">Read More →</a>
 </div>
-<div class="service-card reveal">
+<div class="service-card reveal" onclick="openServiceModal(this)" style="cursor:pointer;">
 <div class="service-icon si-7">🔍</div>
 <h3>SEO Services</h3>
 <p>Technical and content SEO optimization to boost organic rankings, improve domain authority and drive quality search traffic.</p>
-<a href="#contact" class="service-link">Read More →</a>
+<a href="#" class="service-link" onclick="event.stopPropagation();event.preventDefault();openServiceModal(this.parentElement)">Read More →</a>
 </div>
-<div class="service-card reveal">
-<div class="service-icon si-4">�📊</div>
+<div class="service-card reveal" onclick="openServiceModal(this)" style="cursor:pointer;">
+<div class="service-icon si-4">📈📊</div>
 <h3>Digital Marketing</h3>
 <p>Data-driven SEO, PPC, and social media campaigns that increase visibility, drive qualified traffic, and boost conversions.</p>
-<a href="#contact" class="service-link">Read More →</a>
+<a href="#" class="service-link" onclick="event.stopPropagation();event.preventDefault();openServiceModal(this.parentElement)">Read More →</a>
 </div>
-<div class="service-card reveal">
+<div class="service-card reveal" onclick="openServiceModal(this)" style="cursor:pointer;">
 <div class="service-icon si-5">⚙️</div>
 <h3>Web Applications</h3>
 <p>Enterprise-grade web applications with robust backends, real-time features, and intuitive interfaces that streamline operations.</p>
-<a href="#contact" class="service-link">Read More →</a>
+<a href="#" class="service-link" onclick="event.stopPropagation();event.preventDefault();openServiceModal(this.parentElement)">Read More →</a>
 </div>
-<div class="service-card reveal">
+<div class="service-card reveal" onclick="openServiceModal(this)" style="cursor:pointer;">
 <div class="service-icon si-6">🎨</div>
 <h3>Brand Creation</h3>
 <p>Complete brand identity design including logos, style guides, and visual systems that make your business instantly recognizable.</p>
-<a href="#contact" class="service-link">Read More →</a>
+<a href="#" class="service-link" onclick="event.stopPropagation();event.preventDefault();openServiceModal(this.parentElement)">Read More →</a>
+</div>
+<div class="service-card reveal" onclick="openServiceModal(this)" style="cursor:pointer;">
+<div class="service-icon si-7">💳</div>
+<h3>Billing Software</h3>
+<p>Automated billing solutions with invoice generation, subscription management, and payment integration for seamless financial operations.</p>
+<a href="#" class="service-link" onclick="event.stopPropagation();event.preventDefault();openServiceModal(this.parentElement)">Read More →</a>
 </div>
 </div>
 </div>
@@ -742,8 +794,9 @@ Free Consultation
 </div>
 <div class="contact-socials">
 <a href="https://www.linkedin.com/company/intoxia-technologies-pvt-ltd/posts/?feedView=all" class="social-link linkedin" title="LinkedIn" target="_blank" rel="noopener noreferrer">in</a>
-<a href="#" class="social-link x" title="X (Twitter)">X</a>
-<a href="#" class="social-link instagram" title="Instagram">IG</a>
+<a href="https://x.com/home" class="social-link x" title="X" target="_blank" rel="noopener noreferrer">X</a>
+<a href="https://www.facebook.com/intoxiatechnologies/" class="social-link facebook" title="Facebook" target="_blank" rel="noopener noreferrer">f</a>
+<a href="https://www.instagram.com/intoxiatechnologies/" class="social-link instagram" title="Instagram" target="_blank" rel="noopener noreferrer"><svg width="20" height="20" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.17.054 1.976.24 2.433.401a4.92 4.92 0 011.675 1.086 4.92 4.92 0 011.086 1.675c.161.457.347 1.263.401 2.433.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.054 1.17-.24 1.976-.401 2.433a4.92 4.92 0 01-1.086 1.675 4.92 4.92 0 01-1.675 1.086c-.457.161-1.263.347-2.433.401-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-1.17-.054-1.976-.24-2.433-.401a4.92 4.92 0 01-1.675-1.086 4.92 4.92 0 01-1.086-1.675c-.161-.457-.347-1.263-.401-2.433C2.175 15.584 2.163 15.204 2.163 12s.012-3.584.07-4.85c.054-1.17.24-1.976.401-2.433a4.92 4.92 0 011.086-1.675 4.92 4.92 0 011.675-1.086c.457-.161 1.263-.347 2.433-.401C8.416 2.175 8.796 2.163 12 2.163zm0-2.163C8.756 0 8.333.011 7.052.069 5.72.127 4.672.327 3.83.687 2.95 1.068 2.21 1.608 1.608 2.21c-.602.602-1.142 1.342-1.523 2.222-.36.842-.56 1.89-.618 3.222C-.011 8.333 0 8.756 0 12c0 3.244.011 3.667.069 4.948.058 1.332.257 2.38.618 3.222.381.88.921 1.62 1.523 2.222.602.602 1.342 1.142 2.222 1.523.842.36 1.89.56 3.222.618C8.333 23.989 8.756 24 12 24c3.244 0 3.667-.011 4.948-.069 1.332-.058 2.38-.257 3.222-.618.88-.381 1.62-.921 2.222-1.523.602-.602 1.142-1.342 1.523-2.222.36-.842.56-1.89.618-3.222.058-1.281.069-1.704.069-4.948 0-3.244-.011-3.667-.069-4.948-.058-1.332-.257-2.38-.618-3.222-.381-.88-.921-1.62-1.523-2.222C20.78.921 20.04.381 19.16 0c-.842-.36-1.89-.56-3.222-.618C15.667.011 15.244 0 12 0z"/><path d="M12 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zm0 10.162a3.999 3.999 0 110-7.998 3.999 3.999 0 010 7.998z"/><circle cx="18.406" cy="5.594" r="1.44"/></svg></a>
 <a href="#" class="social-link github" title="GitHub">GH</a>
 </div>
 </div>
@@ -782,7 +835,7 @@ Free Consultation
 <div class="footer-brand">
 <a href="#" class="nav-logo" style="margin-bottom:.5rem">
 <div class="logo-icon">IX</div>
-<span>Intoxia</span>
+<span>Intoxia technologies</span>
 </a>
 <p>A forward-thinking digital transformation company empowering businesses with AI-driven, scalable, and innovative technology solutions.</p>
 </div>
@@ -811,8 +864,8 @@ Free Consultation
 <div>
 <h4>Contact Info</h4>
 <div class="footer-links">
-<a href="tel:+919876543210">+91 98765 43210</a>
-<a href="mailto:hello@intoxia.tech">hello@intoxia.tech</a>
+<a href="tel:+917011639618">+91 70116 39618</a>
+<a href="mailto:info@intoxia.tech">info@intoxia.tech</a>
 <a href="#">Gurugram, India</a>
 <a href="#">Mon-Fri: 9AM - 7PM IST</a>
 </div>
@@ -820,7 +873,6 @@ Free Consultation
 </div>
 <div class="footer-bottom">
 <p>© 2026 Intoxia Technologies. All rights reserved.</p>
-<p>Crafted with ❤️ for digital excellence</p>
 </div>
 </div>
 </footer>
@@ -829,6 +881,17 @@ Free Consultation
 <a href="https://wa.me/917011639618" class="whatsapp-button" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
   <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" />
 </a>
+
+<!-- Service Modal -->
+<div class="service-modal" id="serviceModal">
+<div class="modal-content">
+<button class="modal-close" onclick="closeServiceModal()">✕</button>
+<div id="modalBody"></div>
+<div style="margin-top:2rem">
+<a href="#contact" class="btn-primary" onclick="closeServiceModal();document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Get Started</a>
+</div>
+</div>
+</div>
 
 <script>
 // Navbar scroll effect
@@ -839,10 +902,56 @@ navbar.classList.toggle('scrolled',window.scrollY>50);
 
 // Mobile menu
 function toggleMenu(){
-document.getElementById('mobileMenu').classList.toggle('active');
+const menu=document.getElementById('mobileMenu');
+const isOpening=!menu.classList.contains('active');
+menu.classList.toggle('active',isOpening);
+document.body.style.overflow=isOpening?'hidden':'';
 }
 
-// Scroll reveal
+// Service Modal
+const serviceData={
+'Web Development':{title:'🌐 Web Development - Complete Solution',details:`<p>At Intoxia Technologies, we specialize in designing and developing custom, responsive, and high-performance websites tailored to your business needs. Our expert team leverages modern technologies and frameworks to create visually appealing, user-friendly, and scalable web solutions.</p>
+<p>We focus not just on building websites, but on delivering digital experiences that engage visitors, enhance brand credibility, and drive conversions. From startups to enterprises, our solutions are crafted to turn your online presence into a powerful growth engine—transforming visitors into loyal customers.</p>
+<h3 style="margin-top:1.5rem;margin-bottom:0.8rem;color:#00d4ff;font-size:1.1rem;">What We Deliver:</h3>
+<ul style="margin-left:1.5rem;margin-top:0.5rem;"><li>• Responsive design for all devices</li><li>• SEO-optimized architecture</li><li>• Fast page load speeds & performance</li><li>• CMS integration & easy maintenance</li><li>• E-commerce integration</li><li>• Custom functionality & APIs</li><li>• User experience optimization</li><li>• Security & compliance ready</li></ul>`},
+'Mobile App Development':{title:'📱 Mobile App Development - iOS & Android',details:`Create powerful mobile apps that engage users and drive business growth. We specialize in:<ul style="margin-left:1.5rem;margin-top:0.5rem;"><li>• Native iOS & Android apps</li><li>• Cross-platform development (React Native, Flutter)</li><li>• Real-time synchronization</li><li>• Push notifications & user engagement</li><li>• Offline functionality</li><li>• App store optimization & launch</li></ul>`},
+'E-commerce Solutions':{title:'🛒 E-commerce Solutions - Build Your Store',details:`Launch a profitable online business with our complete e-commerce platform. Features include:<ul style="margin-left:1.5rem;margin-top:0.5rem;"><li>• Multi-vendor marketplace support</li><li>• Secure payment gateway integration</li><li>• Real-time inventory management</li><li>• Order tracking & fulfillment</li><li>• Customer analytics & reports</li><li>• Mobile-first shopping experience</li></ul>`},
+'Software Development':{title:'💻 Custom Software Development',details:`We build enterprise-grade software solutions tailored to your exact requirements:<ul style="margin-left:1.5rem;margin-top:0.5rem;"><li>• Custom business applications</li><li>• Cloud-native architecture</li><li>• Microservices & APIs</li><li>• Database design & optimization</li><li>• System integration & migration</li><li>• 24/7 support & maintenance</li></ul>`},
+'SEO Services':{title:'🔍 SEO Services - Dominate Search Results',details:`Increase your online visibility and drive organic traffic with our comprehensive SEO strategy:<ul style="margin-left:1.5rem;margin-top:0.5rem;"><li>• Keyword research & strategy</li><li>• On-page & technical SEO</li><li>• Link building & authority</li><li>• Content optimization</li><li>• Monthly reporting & analytics</li><li>• Competitive analysis</li></ul>`},
+'Digital Marketing':{title:'📊 Digital Marketing - Full-Stack Growth',details:`Accelerate business growth with our multi-channel digital marketing approach:<ul style="margin-left:1.5rem;margin-top:0.5rem;"><li>• SEO & organic search marketing</li><li>• Google Ads & PPC campaigns</li><li>• Social media marketing & advertising</li><li>• Email marketing automation</li><li>• Content marketing strategy</li><li>• ROI tracking & optimization</li></ul>`},
+'Web Applications':{title:'⚙️ Enterprise Web Applications',details:`Build powerful web apps that streamline operations and enhance productivity:<ul style="margin-left:1.5rem;margin-top:0.5rem;"><li>• Dashboard & analytics platforms</li><li>• Real-time collaboration tools</li><li>• Workflow automation systems</li><li>• High-availability infrastructure</li><li>• Data security & compliance</li><li>• Scalable architecture</li></ul>`},
+'Brand Creation':{title:'🎨 Brand Creation & Identity Design',details:`Create a memorable brand that stands out and resonates with your audience:<ul style="margin-left:1.5rem;margin-top:0.5rem;"><li>• Logo design & concepts</li><li>• Brand strategy & positioning</li><li>• Color palette & typography</li><li>• Brand guidelines & style guide</li><li>• Marketing collateral design</li><li>• Brand messaging & voice</li></ul>`},
+'Billing Software':{title:'💳 Billing Software Solutions',details:`<p>Streamline your financial operations with our powerful, automated billing software built for modern businesses. We create custom billing systems that reduce manual work, minimize errors, and accelerate payment cycles.</p>
+<p>Our billing solutions integrate seamlessly with your existing systems, providing real-time financial insights and improving cash flow management. Whether you need invoicing, subscription management, or complex billing workflows, we deliver robust solutions tailored to your business model.</p>
+<h3 style="margin-top:1.5rem;margin-bottom:0.8rem;color:#00d4ff;font-size:1.1rem;">What We Deliver:</h3>
+<ul style="margin-left:1.5rem;margin-top:0.5rem;"><li>• Automated invoice generation & delivery</li><li>• Recurring billing & subscription management</li><li>• Multi-currency & multi-language support</li><li>• Payment gateway integration</li><li>• Real-time reporting & analytics</li><li>• Compliance & audit trails</li><li>• API for seamless integration</li><li>• Customer self-service portal</li></ul>`}
+};
+
+function openServiceModal(card){
+const title=card.querySelector('h3')?card.querySelector('h3').textContent:'';
+const data=serviceData[title];
+if(data){
+document.getElementById('modalBody').innerHTML=`<h2>${data.title}</h2>${data.details}`;
+document.getElementById('serviceModal').classList.add('active');
+document.body.style.overflow='hidden';
+}
+}
+
+function closeServiceModal(){
+document.getElementById('serviceModal').classList.remove('active');
+document.body.style.overflow='auto';
+}
+
+document.getElementById('serviceModal').addEventListener('click',(e)=>{
+if(e.target.id==='serviceModal')closeServiceModal();
+});
+
+// Close modal on Escape key
+document.addEventListener('keydown',(e)=>{
+if(e.key==='Escape')closeServiceModal();
+});
+
+
 const reveals=document.querySelectorAll('.reveal');
 const revealObserver=new IntersectionObserver((entries)=>{
 entries.forEach((entry,i)=>{
@@ -881,7 +990,12 @@ counters.forEach(el=>counterObserver.observe(el));
 document.querySelectorAll('a[href^="#"]').forEach(a=>{
 a.addEventListener('click',e=>{
 e.preventDefault();
-const target=document.querySelector(a.getAttribute('href'));
+const href=a.getAttribute('href');
+if(!href||href==='#'){
+window.scrollTo({top:0,behavior:'smooth'});
+return;
+}
+const target=document.querySelector(href);
 if(target)target.scrollIntoView({behavior:'smooth',block:'start'});
 });
 });
